@@ -44,13 +44,15 @@
 
 
 // let promise = new Promise(function(resolve, reject) {
-//     setTimeout(() => resolve("done!"), 1000);
+//     setTimeout(() => resolve("HUMANA!"), 1000);
 //   });
   
 //   promise.then(
 //     result => alert(result),
 //     error => alert(error) 
 //   );
+
+ 
 
 
 
@@ -78,3 +80,44 @@
 //   });
   
 //   console.log(promise1);
+
+// new Promise((resolve, reject) => {
+//     console.log('Initial');
+
+//     resolve();
+// })
+// .then(() => {
+//     throw new Error('Something failed');
+        
+//     console.log('Do this');
+// })
+// .catch(() => {
+//     console.error('Do that');
+// })
+// .then(() => {
+//     console.log('Do this, no matter what happened before');
+// });
+
+// function delay(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+//   }
+  
+//   delay(3000).then(() => alert('runs after 3 seconds'));
+ 
+const promiseToCleanTheRoom = new Promise(function(resolve,reject){
+   
+    const isClean = false;
+
+
+        if( isClean){
+            resolve ('CLean');
+        } else {
+            reject ( ' wala pa');
+        }
+});
+
+promiseToCleanTheRoom.then(function(fromResolve){
+    console.log('The Room is ' + fromResolve);
+}).catch(function(fromReject){
+    console.log('The room' + fromReject );
+})
