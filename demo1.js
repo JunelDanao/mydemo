@@ -146,4 +146,47 @@
 
 // });
 
+// function getCurrentTime(callback) {
+//     return setTimeout(function() {
+//       const currentTime = new Date();
+//       callback(currentTime);
+//     }, 2000);
+//   }
+//   getCurrentTime(function(currentTime) {
+//     console.log('The current time is: ' + currentTime);
+//   });
 
+
+// function getCurrentTime(onSuccess, onFail) {
+//     // Get the current 'global' time from an API
+//     return setTimeout(function() {
+//       // randomly decide if the date is retrieved or not
+//       const didSucceed = Math.random() >= 0.5;
+//       if (didSucceed) {
+//         const currentTime = new Date();
+//         onSuccess(currentTime);
+//       } else {
+//         onFail('Unknown error');
+//       }
+//     }, 2000);
+//   }
+//   getCurrentTime(function(currentTime) {
+//     console.log('The current time is: ' + currentTime);
+//   }, function(error) {
+//     console.log('There was an error fetching the time');
+//   });
+
+
+const processDataAsycn = async (num) => {   
+    if(typeof num === 'number') {  
+      return 2*num;  
+    } else {  
+      throw new Error('Something went wrong');  
+    }  
+  };  
+  processDataAsycn(22).then((data) => {  
+    console.log('Data from processDataAsycn() with async( When promise gets resolved ): ' + data);  
+  }).catch((error) => {  
+    console.log('Error from processDataAsycn() with async( When promise gets rejected ): ' + error);  
+   
+  });
