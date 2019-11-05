@@ -1,12 +1,11 @@
 
-// A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+// A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. a Promise object is used for handling asynchronous computations which has some important guarantees that are difficult to handle with the callback method.
 
 // A Promise is in one of these states:
 
-// pending: initial state, neither fulfilled nor rejected.
-// fulfilled: meaning that the operation completed successfully.
-// rejected: meaning that the operation failed.
-
+// PENDING - initial state, not fulfilled or rejected
+// FULFILLED - meaning that the operation is completed successfully
+// REJECTED - meaning that the operation failed .
 // The constructor syntax for a promise object is:
 
 // let promise = new Promise(function(resolve, reject) {
@@ -26,9 +25,13 @@
 
 // The promise object returned by new Promise constructor has internal properties:
 
-// state — initially "pending", then changes to either "fulfilled" when resolve is called or "rejected" when reject is called.
-// result — initially undefined, then changes to value when resolve(value) called or error when reject(error) is called.
-// So the executor eventually moves promise to one of these states:
+
+
+// PROMISE OBJECT 
+
+// .then (fulfilled)
+// .catch = (rejected)
+
 
 //-----------------------------------------------------------------------
 
@@ -48,7 +51,7 @@
 //   });
   
 //   promise.then(
-//     result => alert(result),
+//     result => console.log(result),
 //     error => alert(error) 
 //   );
 
@@ -63,16 +66,16 @@
 //   });
 
 //   promise.then(
-//     result => alert(result),
-//     error => alert(error) 
+//     result => (result),
+//     error => (error) 
 //   );
 
 
 
 // const promise1 = new Promise(function(resolve, reject) {
 //     setTimeout(function() {
-//       resolve('foo');
-//     }, 300);
+//       resolve('WEW');
+//     }, 3000);
 //   });
   
 //   promise1.then(function(value) {
@@ -80,6 +83,34 @@
 //   });
   
 //   console.log(promise1);
+
+
+//------------------------------------------------------
+
+
+// function delay(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+//   }
+  
+//   delay(3000).then(() => alert('runs after 3 seconds'));
+ 
+// const promiseToCleanTheRoom = new Promise(function(resolve,reject){
+
+
+//         if( isClean){
+//             resolve ('CLean');
+//         } else {
+//             reject ( ' wala pa');
+//         }
+// });
+
+// promiseToCleanTheRoom.then(function(fromResolve){
+//     console.log('The Room is ' + fromResolve);
+// }).catch(function(fromReject){
+//     console.log('The room' + fromReject );
+// })
+
+//---------------------------------------------------------------------
 
 // new Promise((resolve, reject) => {
 //     console.log('Initial');
@@ -98,26 +129,21 @@
 //     console.log('Do this, no matter what happened before');
 // });
 
-// function delay(ms) {
-//     return new Promise(resolve => setTimeout(resolve, ms));
-//   }
-  
-//   delay(3000).then(() => alert('runs after 3 seconds'));
- 
-const promiseToCleanTheRoom = new Promise(function(resolve,reject){
-   
-    const isClean = false;
+// const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(" Comeback");
+//     }, 3000);
+
+//     setTimeout(() => {
+//         reject (" Walang Balikan SADED");
+//     }, 3000);
+
+//     promise.then((response) => {
+//         log(response);
+//     }).catch((error) => {
+//         log(error);
+//     });
+
+// });
 
 
-        if( isClean){
-            resolve ('CLean');
-        } else {
-            reject ( ' wala pa');
-        }
-});
-
-promiseToCleanTheRoom.then(function(fromResolve){
-    console.log('The Room is ' + fromResolve);
-}).catch(function(fromReject){
-    console.log('The room' + fromReject );
-})
